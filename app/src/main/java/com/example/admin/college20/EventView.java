@@ -3,10 +3,13 @@ package com.example.admin.college20;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,12 +45,19 @@ public class EventView extends AppCompatActivity {
         //Select the type of layout manager you would use for your recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         final String event_cat  = getIntent().getStringExtra("Category");
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setTitle(event_cat);
+        getSupportActionBar().setTitle(event_cat);
 
         FirebaseRecyclerAdapter<Event, EventView.RequestViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Event, EventView.RequestViewHolder>(
                 Event.class,

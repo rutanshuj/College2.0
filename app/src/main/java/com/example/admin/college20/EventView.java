@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class EventView extends AppCompatActivity {
 
@@ -62,6 +64,9 @@ public class EventView extends AppCompatActivity {
                 viewHolder.setPrice(model.getPrice());
                 viewHolder.setImageUrl(getApplicationContext(), model.getImageUrl());
 
+                viewHolder.setEvent_user_image(getApplicationContext(), model.getEvent_user_image());
+                viewHolder.setEvent_username(model.getEvent_username());
+
                 final String desc = model.getDesc();
                 final String imageurl = model.getImageUrl();
                 final String start_date = model.getStart_date();
@@ -76,6 +81,8 @@ public class EventView extends AppCompatActivity {
                 final String fblink = model.getFblink();
                 final String weblink = model.getWeblink();
                 final String contact = model.getContact();
+                final String eventusername = model.getEvent_username();
+                final String event_user_image = model.getEvent_user_image();
 
                 viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -136,6 +143,16 @@ public class EventView extends AppCompatActivity {
         public void setImageUrl(Context ctx, String imageUrl) {
             ImageView a_image = (ImageView) mView.findViewById(R.id.request_image);
             Picasso.with(ctx).load(imageUrl).into(a_image);
+        }
+
+        public void setEvent_username(String event_username) {
+            TextView a_event_username = (TextView) mView.findViewById(R.id.userName);
+            a_event_username.setText(event_username);
+        }
+
+        public void setEvent_user_image(Context ctx, String event_user_image) {
+            CircleImageView a_event_user_image = (CircleImageView) mView.findViewById(R.id.event_user_image);
+            Picasso.with(ctx).load(event_user_image).into(a_event_user_image);
         }
     }
 }

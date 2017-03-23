@@ -7,12 +7,7 @@
         android:icon="@drawable/ic_action_refresh"
         android:title="Refresh"
         android:orderInCategory="0"/>
-    <item
-        android:id="@+id/action_settings"
-        android:title="Settings"
-        app:showAsAction="ifRoom"
-        >
-    </item>
+
     <item
         android:id="@+id/action_back"
         android:title="Back"

@@ -1,7 +1,7 @@
 package com.example.admin.college20;
 
 public class User {
-    private String imageUrl, name, email, id;
+    private String imageUrl, name, email;
 
     public User() {
     }

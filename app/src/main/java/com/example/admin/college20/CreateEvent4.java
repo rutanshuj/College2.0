@@ -4,12 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,9 +19,13 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -39,6 +43,10 @@ public class CreateEvent4 extends AppCompatActivity {
 
     private StorageReference mStorageRef;
     private DatabaseReference databaseReference;
+    private DatabaseReference userRef;
+    private FirebaseAuth firebaseAuth;
+    private String userID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +60,31 @@ public class CreateEvent4 extends AppCompatActivity {
         doneButton = (Button) findViewById(R.id.doneButton);
         eventImage = (ImageView) findViewById(R.id.eventImage);
 
+        userID = firebaseAuth.getInstance().getCurrentUser().getUid();
+
         mStorageRef = FirebaseStorage.getInstance().getReference();
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Event");
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final String user_name = (String) dataSnapshot.child("name").getValue();
+                final String user_image = (String) dataSnapshot.child("imageUrl").getValue();
+                SharedPreferences sp = getSharedPreferences("preference", Context.MODE_PRIVATE);
+                SharedPreferences.Editor preferences = sp.edit();
+
+                preferences.putString("user_name", user_name);
+                preferences.putString("event_user_image", user_image);
+                preferences.commit();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         upload_image_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +125,9 @@ public class CreateEvent4 extends AppCompatActivity {
         final String start_time = preferences.getString("start_time", "");
         final String end_time = preferences.getString("end_time", "");
 
+        final String event_username = preferences.getString("user_name", "");
+        final String event_user_image = preferences.getString("event_user_image","");
+
 
         if (!TextUtils.isEmpty(mEventDesc.getText().toString())
                 && imageUri != null) {
@@ -106,7 +140,6 @@ public class CreateEvent4 extends AppCompatActivity {
 
 
                     Uri uri = taskSnapshot.getDownloadUrl();
-
                     DatabaseReference newEvent = databaseReference.push();
 
                     newEvent.child("title").setValue(event_title);
@@ -126,6 +159,9 @@ public class CreateEvent4 extends AppCompatActivity {
 
                     newEvent.child("desc").setValue(mEventDesc.getText().toString());
                     newEvent.child("imageUrl").setValue(uri.toString());
+
+                    newEvent.child("event_username").setValue(event_username);
+                    newEvent.child("event_user_image").setValue(event_user_image);
 
                     progressDialog.dismiss();
                     startActivity(new Intent(CreateEvent4.this, MainPage1.class));

@@ -11,9 +11,13 @@ public class Event  {
 
     private String start_date, end_date, start_time, end_time, fblink, weblink, contact, club;
 
+    private String event_username, event_user_image;
+
+
     public Event(String title, String desc, String location, String category, String price,
-                 String imageUrl, String start_date, String end_date, String start_time, String end_time,
-                 String fblink, String weblink, String contact, String club) {
+                 String imageUrl, String start_date, String end_date, String start_time,
+                 String end_time, String fblink, String weblink, String contact, String club,
+                 String event_username, String event_user_image) {
         this.title = title;
         this.desc = desc;
         this.location = location;
@@ -28,6 +32,8 @@ public class Event  {
         this.weblink = weblink;
         this.contact = contact;
         this.club = club;
+        this.event_username = event_username;
+        this.event_user_image = event_user_image;
     }
 
     public Event(){
@@ -143,6 +149,22 @@ public class Event  {
 
     public void setClub(String club) {
         this.club = club;
+    }
+
+    public String getEvent_username() {
+        return event_username;
+    }
+
+    public void setEvent_username(String event_username) {
+        this.event_username = event_username;
+    }
+
+    public String getEvent_user_image() {
+        return event_user_image;
+    }
+
+    public void setEvent_user_image(String event_user_image) {
+        this.event_user_image = event_user_image;
     }
 
 }

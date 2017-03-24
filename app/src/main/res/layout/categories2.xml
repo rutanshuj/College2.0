@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="wrap_content"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
         android:id="@+id/arch"
-        android:clickable="true"
-        android:background="@drawable/arch"/>
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/arch"
+        android:clickable="true" />
 
     <ImageView
         android:clickable="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/catHeight"
         android:id="@+id/artImg"
 
         android:background="@drawable/art"/>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/catHeight"
         android:clickable="true"
         android:id="@+id/businessImg"
         android:background="@drawable/business"/>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/catHeight"
         android:clickable="true"
         android:id="@+id/literatureImg"
         android:background="@drawable/literature"/>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/catHeight"
         android:clickable="true"
         android:id="@+id/scienceImg"
         android:background="@drawable/science"/>
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/catHeight"
         android:clickable="true"
         android:id="@+id/techImg"

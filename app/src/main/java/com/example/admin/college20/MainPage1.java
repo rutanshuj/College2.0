@@ -132,6 +132,10 @@ public class MainPage1 extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(), EventView.class);
                     startActivity(i);
                 }
+                if( item.getItemId() == R.id.aboutUs){
+                    Intent i = new Intent(getApplicationContext(), AboutUs.class);
+                    startActivity(i);
+                }
                 return false;
             }
         });

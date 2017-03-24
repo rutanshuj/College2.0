@@ -12,4 +12,6 @@
     <item android:id="@+id/event_list"
         android:title="Event List"
         />
+    <item android:id="@+id/aboutUs"
+        android:title="About Us"/>
 </menu>

@@ -120,13 +120,8 @@ public class MainPage1 extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.OP) ;
                 {
-                    Intent i = new Intent();
-                    i.setClass(getApplicationContext(), uMainPage.class);
+                    Intent i = new Intent(getApplicationContext(), uMainPage.class);
                     startActivity(i);
-                }
-                if( item.getItemId() == R.id.action_logout){
-                    Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-                    mAuth.signOut();
                 }
                 if( item.getItemId() == R.id.event_list){
                     Intent i = new Intent(getApplicationContext(), EventView.class);

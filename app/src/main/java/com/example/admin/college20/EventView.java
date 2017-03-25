@@ -16,8 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -53,12 +56,35 @@ public class EventView extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        final String event_cat  = getIntent().getStringExtra("Category");
+        final String event_cat = getIntent().getStringExtra("Category");
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setTitle(event_cat);
         getSupportActionBar().setTitle(event_cat);
 
+        databaseReference.orderByChild("category").equalTo(event_cat).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot !=null){
+                    startShowing();
+                }
+                else{
+                    Intent i = new Intent(getApplicationContext(), NoResults.class);
+                    startActivity(i);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void startShowing() {
+        final String event_cat = getIntent().getStringExtra("Category");
         FirebaseRecyclerAdapter<Event, EventView.RequestViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Event, EventView.RequestViewHolder>(
                 Event.class,
                 R.layout.events_list_row,
@@ -69,63 +95,58 @@ public class EventView extends AppCompatActivity {
             @Override
             protected void populateViewHolder(EventView.RequestViewHolder viewHolder, Event model, int position) {
 
-                if(databaseReference.orderByChild("category").equalTo(event_cat)!= null){
-                    viewHolder.setTitle(model.getTitle());
-                    viewHolder.setCategory(model.getCategory());
-                    viewHolder.setLocation(model.getLocation());
-                    viewHolder.setPrice(model.getPrice());
-                    viewHolder.setImageUrl(getApplicationContext(), model.getImageUrl());
 
-                    viewHolder.setEvent_user_image(getApplicationContext(), model.getEvent_user_image());
-                    viewHolder.setEvent_username(model.getEvent_username());
+                viewHolder.setTitle(model.getTitle());
+                viewHolder.setCategory(model.getCategory());
+                viewHolder.setLocation(model.getLocation());
+                viewHolder.setPrice(model.getPrice());
+                viewHolder.setImageUrl(getApplicationContext(), model.getImageUrl());
 
-                    final String desc = model.getDesc();
-                    final String imageurl = model.getImageUrl();
-                    final String start_date = model.getStart_date();
-                    final String end_date = model.getEnd_date();
-                    final String start_time = model.getStart_time();
-                    final String end_time = model.getEnd_time();
-                    final String club = model.getClub();
-                    final String category = model.getCategory();
-                    final String price = model.getPrice();
-                    final String title = model.getTitle();
-                    final String location = model.getLocation();
-                    final String fblink = model.getFblink();
-                    final String weblink = model.getWeblink();
-                    final String contact = model.getContact();
-                    final String eventusername = model.getEvent_username();
-                    final String event_user_image = model.getEvent_user_image();
+                viewHolder.setEvent_user_image(getApplicationContext(), model.getEvent_user_image());
+                viewHolder.setEvent_username(model.getEvent_username());
 
-                    viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(EventView.this, EventDetails.class);
-                            intent.putExtra("title", title);
-                            intent.putExtra("desc", desc);
-                            intent.putExtra("imageUrl", imageurl);
-                            intent.putExtra("start_date", start_date);
-                            intent.putExtra("end_date", end_date);
-                            intent.putExtra("start_time", start_time);
-                            intent.putExtra("end_time", end_time);
-                            intent.putExtra("club", club);
-                            intent.putExtra("category", category);
-                            intent.putExtra("price", price);
-                            intent.putExtra("location", location);
-                            intent.putExtra("fblink", fblink);
-                            intent.putExtra("weblink", weblink);
-                            intent.putExtra("contact", contact);
-                            startActivity(intent);
-                        }
-                    });
+                final String desc = model.getDesc();
+                final String imageurl = model.getImageUrl();
+                final String start_date = model.getStart_date();
+                final String end_date = model.getEnd_date();
+                final String start_time = model.getStart_time();
+                final String end_time = model.getEnd_time();
+                final String club = model.getClub();
+                final String category = model.getCategory();
+                final String price = model.getPrice();
+                final String title = model.getTitle();
+                final String location = model.getLocation();
+                final String fblink = model.getFblink();
+                final String weblink = model.getWeblink();
+                final String contact = model.getContact();
+                final String eventusername = model.getEvent_username();
+                final String event_user_image = model.getEvent_user_image();
 
-                }
-                else{
-                    Intent i = new Intent(getApplicationContext(), NoResults.class);
-                    startActivity(i);
-                }
+                viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(EventView.this, EventDetails.class);
+                        intent.putExtra("title", title);
+                        intent.putExtra("desc", desc);
+                        intent.putExtra("imageUrl", imageurl);
+                        intent.putExtra("start_date", start_date);
+                        intent.putExtra("end_date", end_date);
+                        intent.putExtra("start_time", start_time);
+                        intent.putExtra("end_time", end_time);
+                        intent.putExtra("club", club);
+                        intent.putExtra("category", category);
+                        intent.putExtra("price", price);
+                        intent.putExtra("location", location);
+                        intent.putExtra("fblink", fblink);
+                        intent.putExtra("weblink", weblink);
+                        intent.putExtra("contact", contact);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         recyclerView.setAdapter(firebaseRecyclerAdapter);
+
     }
 
     public static class RequestViewHolder extends RecyclerView.ViewHolder {

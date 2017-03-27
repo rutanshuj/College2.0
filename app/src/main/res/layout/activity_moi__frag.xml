@@ -40,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name here"
+                android:textColor="@color/black"
                 android:padding="4dp"
                 android:textSize="25dp"
                 android:id="@+id/moi_name"
@@ -52,7 +52,7 @@
                 android:textSize="20dp"
                 android:padding="4dp"
                 android:layout_gravity="center"
-                android:text="Email"
+                android:textColor="@color/black"
                 />
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>

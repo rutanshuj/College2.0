@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                progressDialog.setMessage("Logging In");
+                progressDialog.show();
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
@@ -242,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("email", email);
                         current_user_db.child("imageUrl").setValue(url);
                         current_user_db.child("user_id").setValue(uid);
+                        progressDialog.dismiss();
                     };
                 }
             }

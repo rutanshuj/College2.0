@@ -114,10 +114,7 @@ public class MainPage1 extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mp1NavigationLayout.closeDrawers();
-                if (item.getItemId() == R.id.Home) {
-                    FragmentTransaction fragmentTransaction = mp1FragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerToBeFilled, new mp1_SwipeTab()).commit();
-                }
+
                 if (item.getItemId() == R.id.OP) ;
                 {
                     Intent i = new Intent(getApplicationContext(), uMainPage.class);

@@ -48,9 +48,6 @@ public class EventView extends AppCompatActivity {
         //Select the type of layout manager you would use for your recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
-
     }
 
     @Override
@@ -79,8 +76,6 @@ public class EventView extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void startShowing() {
@@ -94,8 +89,7 @@ public class EventView extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(EventView.RequestViewHolder viewHolder, Event model, int position) {
-
-
+                
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setCategory(model.getCategory());
                 viewHolder.setLocation(model.getLocation());
@@ -119,6 +113,7 @@ public class EventView extends AppCompatActivity {
                 final String fblink = model.getFblink();
                 final String weblink = model.getWeblink();
                 final String contact = model.getContact();
+
                 final String eventusername = model.getEvent_username();
                 final String event_user_image = model.getEvent_user_image();
 

@@ -44,6 +44,7 @@ public class Moi_Frag extends Fragment {
     private Uri imageUri = null;
     TextView text_name, text_email;
     ProgressDialog progressDialog;
+    DatabaseReference event_user_image_ref;
 
     private String uid;
     StorageReference storageReference;

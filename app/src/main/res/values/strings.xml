@@ -8,6 +8,7 @@
                         to learn.
     </string>
 
+    <string name="facebook_app_id">1887534148158351</string>
     <!-- Categories Strings -->
     <string name="arts">Arts &amp; Sciences</string>
     <string name="arch">Architecture</string>

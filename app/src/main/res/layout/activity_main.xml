@@ -13,8 +13,14 @@
         android:id="@+id/googleSignInBttn"
         android:textAlignment="center"
         android:layout_marginLeft="100dp"
-        android:layout_marginBottom="270dp"
-        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+<com.facebook.login.widget.LoginButton
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="91dp"
+    android:id="@+id/facebook_login_button"
+    android:layout_alignTop="@+id/googleSignInBttn"
+    android:layout_alignStart="@+id/googleSignInBttn" />
 
 </RelativeLayout>

@@ -131,6 +131,9 @@ public class MainPage1 extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(), AboutUs.class);
                     startActivity(i);
                 }
+                if(item.getItemId() == R.id.action_logout){
+                    FirebaseAuth.getInstance().signOut();
+                }
                 return false;
             }
         });

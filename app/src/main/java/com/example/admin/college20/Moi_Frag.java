@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,43 +52,61 @@ public class Moi_Frag extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View mView = inflater.inflate(R.layout.activity_moi__frag, container, false);
+        final View mView = inflater.inflate(R.layout.activity_moi__frag, container, false);
 
-        imageView = (CircleImageView) mView.findViewById(R.id.register_image);
-        floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.floatingActionButton);
-        text_name = (TextView) mView.findViewById(R.id.moi_name);
-        text_email = (TextView) mView.findViewById(R.id.moi_email);
+            imageView = (CircleImageView) mView.findViewById(R.id.register_image);
+            floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.floatingActionButton);
+            text_name = (TextView) mView.findViewById(R.id.moi_name);
+            text_email = (TextView) mView.findViewById(R.id.moi_email);
 
-        progressDialog = new ProgressDialog(getContext());
+            progressDialog = new ProgressDialog(getContext());
 
-        storageReference = FirebaseStorage.getInstance().getReference();
+            storageReference = FirebaseStorage.getInstance().getReference();
 
-       uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference().child("Users").child(uid);
+
+            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference ref = database.getReference().child("Users").child(uid);
+
 
         ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot!=null){
-                    progressDialog.setMessage("Updating Information");
-                    progressDialog.show();
-                    User user = dataSnapshot.getValue(User.class);
-                    final String name = user.getName();
-                    final String email  = user.getEmail();
-                    final String imageUrl = user.getImageUrl();
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot!=null){
+                        progressDialog.setMessage("Updating Information");
+                        progressDialog.show();
+                        User user = dataSnapshot.getValue(User.class);
+                        final String name = user.getName();
+                        final String email  = user.getEmail();
+                        final String imageUrl = user.getImageUrl();
 
-                    text_name.setText(name);
-                    text_email.setText(email);
-                    Picasso.with(getContext()).load(imageUrl).into(imageView);
-                    progressDialog.dismiss();
+                        SharedPreferences sp1 = getActivity().getSharedPreferences("moi_frag", 0);
+                        SharedPreferences.Editor preferences = sp1.edit();
+                        preferences.putString("name", name);
+                        preferences.putString("imageUrl", imageUrl);
+                        preferences.commit();
+
+                        text_name.setText(name);
+                        text_email.setText(email);
+
+                        Picasso.with(getContext()).load(imageUrl).into(imageView);
+                        progressDialog.dismiss();
+                    }
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            SharedPreferences preferences = getActivity().getSharedPreferences("moi_frag", 0);
+            final String name = preferences.getString("name", "");
+            final String imageUrl = preferences.getString("imageUrl", "");
+            DatabaseReference dr = database.getReference().child("ApprovedEvents").child("event_user_name");
+        dr.orderByChild("event_user_name").equalTo("username");
+        dr.child("event_user_image").setValue("https://lh4.googleusercontent.com/-7T34580_Dm0/AAAAAAAAAAI/AAAAAAAAA7w/kkc4IjKqNNc/s96-c/photo.jpg");
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +129,7 @@ public class Moi_Frag extends Fragment {
         }
     }
     private void imageUploading() {
-        progressDialog.setMessage("Changing Yo Pic");
+        progressDialog.setMessage("Changing Your Pic");
         progressDialog.show();
 
         StorageReference filepath = storageReference.child("Images").child(imageUri.getLastPathSegment());

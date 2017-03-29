@@ -111,10 +111,14 @@ public class Moi_Frag extends Fragment {
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot!=null){
-               //     String h = "https://firebasestorage.googleapis.com/v0/b/college1-a6e9b.appspot.com/o/Images%2Fimage%3A55259?alt=media&token=a1ba820f-bca3-4669-bd6c-512a2cceab03";
+                if(dataSnapshot!=null) {
+                    progressDialog.setMessage("Updating attributes");
+                    progressDialog.show();
+                    //     String h = "https://firebasestorage.googleapis.com/v0/b/college1-a6e9b.appspot.com/o/Images%2Fimage%3A55259?alt=media&token=a1ba820f-bca3-4669-bd6c-512a2cceab03";
                     dr.child(dataSnapshot.getKey()).child("event_user_image")
                             .setValue(imageUrl);
+                    progressDialog.dismiss();
+
                 }
             }
 

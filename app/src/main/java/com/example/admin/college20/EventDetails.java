@@ -69,7 +69,7 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
         club1.setText(club);
 
         start_to_end1.setText(Html.fromHtml(start_time+", " + src_start_date + " - " +
-                end_time + ", " + src_end_date , 0));
+                end_time + ", " + src_end_date));
         toolbar.setTitle(category);
 
         Picasso.with(getApplicationContext()).load(imageUrl).into(eventImage);

@@ -6,55 +6,58 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/background_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/moibackground" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/register_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-50dp"
+                android:src="@drawable/error"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/moi_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/moi_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </LinearLayout>
         <android.support.design.widget.FloatingActionButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/floatingActionButton"
             android:layout_marginTop="150dp"
             android:clickable="true"
-            android:backgroundTint="#ffffff"
+            app:backgroundTint="#ffffff"
             android:src="@drawable/ic_mode_edit_black_24dp"
             android:layout_marginStart="230dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:id="@+id/background_image"
-                android:src="@drawable/moibackground"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/register_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/error"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"
-                android:layout_marginTop="-50dp"
-                android:layout_gravity="center"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:padding="4dp"
-                android:textSize="25dp"
-                android:id="@+id/moi_name"
-                android:layout_gravity="center"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/moi_email"
-                android:textSize="20dp"
-                android:padding="4dp"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                />
-        </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>
 
 </ScrollView>

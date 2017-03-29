@@ -21,10 +21,12 @@ import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -100,12 +102,42 @@ public class Moi_Frag extends Fragment {
                 }
             });
 
-            SharedPreferences preferences = getActivity().getSharedPreferences("moi_frag", 0);
-            final String name = preferences.getString("name", "");
-            final String imageUrl = preferences.getString("imageUrl", "");
-            DatabaseReference dr = database.getReference().child("ApprovedEvents").child("event_user_name");
-        dr.orderByChild("event_user_name").equalTo("username");
-        dr.child("event_user_image").setValue("https://lh4.googleusercontent.com/-7T34580_Dm0/AAAAAAAAAAI/AAAAAAAAA7w/kkc4IjKqNNc/s96-c/photo.jpg");
+        SharedPreferences preferences = getActivity().getSharedPreferences("moi_frag", 0);
+        final String name = preferences.getString("name", "");
+        final String imageUrl = preferences.getString("imageUrl", "");
+        final DatabaseReference dr = database.getReference().child("ApprovedEvents");
+
+        Query query = dr.orderByChild("event_username").equalTo(name);
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot!=null){
+               //     String h = "https://firebasestorage.googleapis.com/v0/b/college1-a6e9b.appspot.com/o/Images%2Fimage%3A55259?alt=media&token=a1ba820f-bca3-4669-bd6c-512a2cceab03";
+                    dr.child(dataSnapshot.getKey()).child("event_user_image")
+                            .setValue(imageUrl);
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

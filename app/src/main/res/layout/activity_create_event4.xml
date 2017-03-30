@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.admin.college20.CreateEvent4"
     android:background="@drawable/create3">
 
-
     <EditText
         android:layout_width="300dp"
+        android:background="@drawable/r3"
+        android:paddingLeft="10dp"
         android:layout_height="wrap_content"
         android:id="@+id/event_desc"
-        android:layout_marginTop="36dp"
         android:inputType="textMultiLine"
         android:hint="Enter short description here..."
+        android:layout_marginTop="23dp"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/upload_image_button"
         android:layout_alignStart="@+id/upload_image_button" />
 
     <Button
@@ -26,8 +25,7 @@
         android:text="Done"
         android:id="@+id/doneButton"
         android:layout_below="@+id/eventImage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -35,18 +33,16 @@
         android:layout_height="60dp"
         android:text="Upload Image"
         android:id="@+id/upload_image_button"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/event_desc"
+        android:layout_marginBottom="17dp"
+        android:layout_above="@+id/eventImage"
         android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="300dp"
         android:layout_height="200dp"
-        app:srcCompat="@drawable/r1"
+        android:background="@drawable/r3"
         android:id="@+id/eventImage"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/upload_image_button"
-        android:layout_alignLeft="@+id/upload_image_button"
+        android:layout_centerVertical="true"
         android:layout_alignStart="@+id/upload_image_button" />
 
 

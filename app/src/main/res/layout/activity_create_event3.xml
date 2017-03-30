@@ -18,6 +18,8 @@
         android:inputType="textPersonName"
         android:hint="Facebook Link"
         android:ems="10"
+        android:background="@drawable/r3"
+        android:paddingLeft="10dp"
         android:layout_marginTop="26dp"
         android:id="@+id/facebook_link_eT"
         android:layout_below="@+id/event_loca_eT"
@@ -30,6 +32,8 @@
         android:inputType="textPersonName"
         android:hint="Website Link"
         android:ems="10"
+        android:background="@drawable/r3"
+        android:paddingLeft="10dp"
         android:layout_marginTop="33dp"
         android:id="@+id/web_link_eT"
         android:layout_below="@+id/facebook_link_eT"
@@ -38,6 +42,8 @@
 
     <EditText
         android:layout_width="300dp"
+        android:background="@drawable/r3"
+        android:paddingLeft="10dp"
         android:layout_height="50dp"
         android:inputType="textPersonName"
         android:hint="Event Location"

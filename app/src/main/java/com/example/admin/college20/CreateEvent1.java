@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -58,11 +59,13 @@ public class CreateEvent1 extends AppCompatActivity {
                 final String event_cat = spinner.getSelectedItem().toString();
                 final String club = mEventClub.getText().toString().trim();
                 final String price = mPrice.getText().toString().trim();
+                Log.d("gaandu", event_cat);
 
                 if (!TextUtils.isEmpty(event_title)
                         && !TextUtils.isEmpty(contact)
                         && !TextUtils.isEmpty(event_cat)
-                        && !TextUtils.isEmpty(price)) {
+                        && !TextUtils.isEmpty(price)
+                        && !event_cat.equals("Select Item")) {
                     Intent i = new Intent(CreateEvent1.this, CreateEvent2.class);
 
                         SharedPreferences sp = getSharedPreferences("preference", Context.MODE_PRIVATE);

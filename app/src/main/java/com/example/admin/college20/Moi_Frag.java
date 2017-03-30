@@ -82,7 +82,7 @@ public class Moi_Frag extends Fragment {
                         final String email  = user.getEmail();
                         final String imageUrl = user.getImageUrl();
 
-                        SharedPreferences sp1 = getActivity().getSharedPreferences("moi_frag", 0);
+                        SharedPreferences sp1 = getActivity().getSharedPreferences("moi_frag", Context.MODE_PRIVATE);
                         SharedPreferences.Editor preferences = sp1.edit();
                         preferences.putString("name", name);
                         preferences.putString("imageUrl", imageUrl);
@@ -102,7 +102,7 @@ public class Moi_Frag extends Fragment {
                 }
             });
 
-        SharedPreferences preferences = getActivity().getSharedPreferences("moi_frag", 0);
+        SharedPreferences preferences = getActivity().getSharedPreferences("moi_frag", Context.MODE_PRIVATE);
         final String name = preferences.getString("name", "");
         final String imageUrl = preferences.getString("imageUrl", "");
         final DatabaseReference dr = database.getReference().child("ApprovedEvents");
@@ -114,7 +114,6 @@ public class Moi_Frag extends Fragment {
                 if(dataSnapshot!=null) {
                     progressDialog.setMessage("Updating attributes");
                     progressDialog.show();
-                    //     String h = "https://firebasestorage.googleapis.com/v0/b/college1-a6e9b.appspot.com/o/Images%2Fimage%3A55259?alt=media&token=a1ba820f-bca3-4669-bd6c-512a2cceab03";
                     dr.child(dataSnapshot.getKey()).child("event_user_image")
                             .setValue(imageUrl);
                     progressDialog.dismiss();

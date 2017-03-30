@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,7 +17,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CreateEvent2 extends Activity implements View.OnClickListener {
 
@@ -34,6 +37,7 @@ public class CreateEvent2 extends Activity implements View.OnClickListener {
         fromTimeBttn = (Button) findViewById(R.id.toTimeBttn);
         toTimeBttn = (Button) findViewById(R.id.fromTimeBttn);
         nextBttn = (Button) findViewById(R.id.nextButton1);
+
 
         //TextView
         endTime = (TextView) findViewById(R.id.endTime);

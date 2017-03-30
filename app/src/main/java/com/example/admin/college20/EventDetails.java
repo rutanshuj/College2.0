@@ -1,6 +1,7 @@
 package com.example.admin.college20;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -54,11 +56,8 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
         final String end_time = intent.getStringExtra("end_time");
         final String club = intent.getStringExtra("club");
         final String category = intent.getStringExtra("category");
-        final String price = intent.getStringExtra("price");
+      //  final String price = intent.getStringExtra("price");
         final String location = intent.getStringExtra("location");
-        final String fblink = intent.getStringExtra("fblink");
-        final String weblink = intent.getStringExtra("weblink");
-        final String contact = intent.getStringExtra("contact");
 
         final String src_start_date = "<b>" + start_date + "</b>";
         final String src_end_date = "<b>" + end_date  + "</b>";
@@ -67,6 +66,10 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
         location1.setText(location);
 //        price1.setText(price);
         club1.setText(club);
+
+        fblink1.setOnClickListener(this);
+        weblink1.setOnClickListener(this);
+        contact1.setOnClickListener(this);
 
         start_to_end1.setText(Html.fromHtml(start_time+", " + src_start_date + " - " +
                 end_time + ", " + src_end_date));
@@ -96,12 +99,40 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Intent intent = getIntent();
+        final String fblink = intent.getStringExtra("fblink");
+        final String weblink = intent.getStringExtra("weblink");
+        final String contact = intent.getStringExtra("contact");
         switch(v.getId()){
             case R.id.request_fblink:
+                Uri uri = Uri.parse(fblink);
+                Intent i = new Intent(Intent.ACTION_VIEW, uri);
+                try {
+                    startActivity(i);
+
+                } catch (Exception e) {
+                    Toast.makeText(this,"Invalid Details", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.request_weblink:
+                Uri uri1 = Uri.parse(weblink);
+                Intent j = new Intent(Intent.ACTION_VIEW, uri1);
+                try {
+                    startActivity(j);
+                } catch (Exception e) {
+                    Toast.makeText(this,"Invalid Details", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.request_contact:
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                Log.d("call", contact);
+                String p = "tel:" + contact;
+                callIntent.setData(Uri.parse(p));
+                try {
+                    startActivity(callIntent);
+                } catch (Exception e) {
+                    Toast.makeText(this, "Invalid Number", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
         }

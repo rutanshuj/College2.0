@@ -9,11 +9,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Scroller;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -61,6 +63,11 @@ public class CreateEvent4 extends AppCompatActivity {
         eventImage = (ImageView) findViewById(R.id.eventImage);
 
         userID = firebaseAuth.getInstance().getCurrentUser().getUid();
+
+        mEventDesc.setScroller(new Scroller(this));
+        mEventDesc.setMaxLines(4);
+        mEventDesc.setVerticalScrollBarEnabled(true);
+        mEventDesc.setMovementMethod(new ScrollingMovementMethod());
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 

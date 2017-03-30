@@ -1,6 +1,7 @@
 package com.example.admin.college20;
 
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,10 +35,10 @@ public class MainPage1 extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     NavigationView mp1NavigationView;
     DrawerLayout mp1NavigationLayout;
-    FragmentManager mp1FragmentManager;
+    FragmentManager mp1FragmentManager, mp1FragmentManager1;
     private GoogleApiClient mGoogleApiClient;
     private DatabaseReference mDatabaseUsers;
-    FragmentTransaction mp1FragmentTransaction;
+    FragmentTransaction mp1FragmentTransaction, mp1FragmentTransaction1;
     Toolbar mp1_toolbar;
 
     @Override
@@ -113,26 +114,42 @@ public class MainPage1 extends AppCompatActivity {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                mp1NavigationLayout.closeDrawers();
+                Fragment fragment = null;
+                Class fragmentClass = null;
 
-                if (item.getItemId() == R.id.OP) ;
-                {
-                    Intent i = new Intent(getApplicationContext(), uMainPage.class);
-                    startActivity(i);
+                switch (item.getItemId()) {
+                    case R.id.OP:
+                        Intent i = new Intent(getApplicationContext(), uMainPage.class);
+                        startActivity(i);
+                        break;
+                    case R.id.event_list:
+                        Intent j = new Intent(getApplicationContext(), EventView.class);
+                        startActivity(j);
+                        break;
+                    case R.id.action_logout:
+                        mAuth.getInstance().signOut();
+                        break;
+                    case R.id.aboutUs:
+                        fragmentClass = AboutUs.class;
+                        break;
                 }
-                if( item.getItemId() == R.id.event_list){
-                    Intent i = new Intent(getApplicationContext(), EventView.class);
-                    startActivity(i);
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                if( item.getItemId() == R.id.aboutUs){
-                    Intent i = new Intent(getApplicationContext(), AboutUs.class);
-                    startActivity(i);
-                }
-                if(item.getItemId() == R.id.action_logout){
-                    FirebaseAuth.getInstance().signOut();
-                }
+
+                // Insert the fragment by replacing any existing fragment
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.containerToBeFilled, new AboutUs()).commit();
+
+                // Set action bar title
+                setTitle(item.getTitle());
+                // Close the navigation drawer
+                mp1NavigationLayout.closeDrawers();
                 return false;
             }
+
         });
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_mp1);

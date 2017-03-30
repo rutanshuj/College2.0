@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/endDate"
         android:hint="Date"
+        android:textColor="@color/black"
         android:layout_alignBottom="@+id/startDate"
         android:layout_alignLeft="@+id/toDate"
         android:layout_alignStart="@+id/toDate" />
@@ -70,6 +71,7 @@
         android:layout_alignStart="@+id/toDate" />
 
     <TextView
+        android:textColor="@color/black"
         android:layout_width="150dp"
         android:textSize="20sp"
         android:layout_height="wrap_content"
@@ -103,6 +105,7 @@
         android:layout_marginStart="99dp" />
 
     <TextView
+        android:textColor="@color/black"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:id="@+id/startTime"
@@ -126,6 +129,7 @@
         android:layout_height="40dp"
         android:hint="Time"
         android:id="@+id/endTime"
+        android:textColor="@color/black"
         android:layout_alignTop="@+id/toTimeBttn"
         android:layout_alignLeft="@+id/toTime"
         android:layout_alignStart="@+id/toTime" />

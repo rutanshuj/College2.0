@@ -93,18 +93,6 @@
         android:layout_alignLeft="@+id/fromDate"
         android:layout_alignStart="@+id/fromDate" />
 
-    <Button
-        android:layout_width="300dp"
-        app:backgroundTint="@color/light_orange"
-        android:textColor="@color/black"
-        android:layout_height="wrap_content"
-        android:text="Timing is Imperative "
-        android:id="@+id/nextButton1"
-        android:layout_marginTop="73dp"
-        android:layout_marginLeft="99dp"
-        android:layout_below="@+id/startTime"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:textColor="@color/black"
         android:layout_width="150dp"
@@ -143,5 +131,17 @@
         android:layout_alignBottom="@+id/fromTimeBttn"
         android:layout_alignLeft="@+id/endTime"
         android:layout_alignStart="@+id/endTime" />
+
+    <Button
+        android:id="@+id/nextButton1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="73dp"
+        android:text="Timing is Imperative "
+        android:textColor="@color/black"
+        app:backgroundTint="@color/light_orange" />
 
 </RelativeLayout>

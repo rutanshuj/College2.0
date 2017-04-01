@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -99,8 +100,17 @@ public class MainActivity extends AppCompatActivity {
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
 
         googleSignIn = (SignInButton) findViewById(R.id.googleSignInBttn);
+        TextView textView = (TextView) googleSignIn.getChildAt(0);
+        final String v = "Sign In with Google";
+        googleSignIn.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        googleSignIn.setColorScheme(SignInButton.COLOR_LIGHT);
+
+        textView.setText(v);
+
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
+
+        googleSignIn.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -252,5 +262,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }

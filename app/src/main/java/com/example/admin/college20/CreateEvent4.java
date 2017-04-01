@@ -171,6 +171,7 @@ public class CreateEvent4 extends AppCompatActivity {
                     newEvent.child("event_user_image").setValue(event_user_image);
 
                     progressDialog.dismiss();
+                    Toast.makeText(CreateEvent4.this, "Event sent for Approval", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CreateEvent4.this, MainPage1.class));
                     finish();
 

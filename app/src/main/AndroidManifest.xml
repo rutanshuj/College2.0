@@ -67,8 +67,9 @@
         <activity
             android:name=".EventDetails"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".AboutUs" />
-        <activity android:name=".NoResults"></activity>
+        <activity android:name=".AboutUs"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".NoResults" />
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
 

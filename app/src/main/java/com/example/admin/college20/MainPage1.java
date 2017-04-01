@@ -114,13 +114,15 @@ public class MainPage1 extends AppCompatActivity {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = null;
+                android.support.v4.app.Fragment fragment = null;
                 Class fragmentClass = null;
 
                 switch (item.getItemId()) {
+                    case R.id.home:
+                        fragmentClass = mp1_SwipeTab.class;
+                        break;
                     case R.id.OP:
-                        Intent i = new Intent(getApplicationContext(), uMainPage.class);
-                        startActivity(i);
+                        fragmentClass = CreateEvent.class;
                         break;
                     case R.id.event_list:
                         Intent j = new Intent(getApplicationContext(), EventView.class);
@@ -131,17 +133,16 @@ public class MainPage1 extends AppCompatActivity {
                         break;
                     case R.id.aboutUs:
                         fragmentClass = AboutUs.class;
+
                         break;
                 }
                 try {
-                    fragment = (Fragment) fragmentClass.newInstance();
+                    fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance();
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.containerToBeFilled, fragment).commit();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                // Insert the fragment by replacing any existing fragment
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.containerToBeFilled, new AboutUs()).commit();
 
                 // Set action bar title
                 setTitle(item.getTitle());

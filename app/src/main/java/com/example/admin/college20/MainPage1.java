@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -35,10 +36,10 @@ public class MainPage1 extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     NavigationView mp1NavigationView;
     DrawerLayout mp1NavigationLayout;
-    FragmentManager mp1FragmentManager, mp1FragmentManager1;
+    FragmentManager mp1FragmentManager;
     private GoogleApiClient mGoogleApiClient;
     private DatabaseReference mDatabaseUsers;
-    FragmentTransaction mp1FragmentTransaction, mp1FragmentTransaction1;
+    FragmentTransaction mp1FragmentTransaction;
     Toolbar mp1_toolbar;
 
     @Override
@@ -130,6 +131,7 @@ public class MainPage1 extends AppCompatActivity {
                         break;
                     case R.id.action_logout:
                         mAuth.getInstance().signOut();
+                        LoginManager.getInstance().logOut();
                         break;
                     case R.id.aboutUs:
                         fragmentClass = AboutUs.class;

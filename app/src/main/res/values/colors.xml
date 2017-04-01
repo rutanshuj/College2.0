@@ -6,7 +6,8 @@
     <color name="background">#2C1EFF</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="orange">#FA0</color>
+    <color name="orange">#FFA500</color>
+    <color name="orange1">#FA0</color>
     <color name="time_and_date">#999999</color>
     <color name="title">#222222</color>
 </resources>

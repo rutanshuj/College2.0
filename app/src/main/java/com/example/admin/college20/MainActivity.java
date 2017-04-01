@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                         DatabaseReference current_user_db =  mDatabaseUsers.child(uid1);
                         current_user_db.child("name").setValue(name);
                         current_user_db.child("email").setValue(email);
-                        Log.d("email", email);
+                        
                         current_user_db.child("imageUrl").setValue(url);
                         current_user_db.child("user_id").setValue(uid);
                         progressDialog.dismiss();

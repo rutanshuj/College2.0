@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">College2.0</string>
+    <string name="app_name">CollegeRama</string>
     <string name="SignUp"><u>"Wanna Sign Up?"</u></string>
     <string name="ClickHere"><u>"Click here to Log In"</u></string>
     <string name="title_activity_main_page1">MainPage1</string>
@@ -87,7 +87,7 @@
     </string-array>
     <string name="title_activity_navigation3">Navigation3</string>
 
-    <string name="edittext_hint"><font size="13">Apple Developers Group (This is called Marketing)</font></string>
+    <string name="edittext_hint"><font size="12">Apple Developers Group (This is called Marketing)</font></string>
 
 
 </resources>

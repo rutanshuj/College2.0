@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -41,6 +42,7 @@ public class MainPage1 extends AppCompatActivity {
     private DatabaseReference mDatabaseUsers;
     FragmentTransaction mp1FragmentTransaction;
     Toolbar mp1_toolbar;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,14 +165,14 @@ public class MainPage1 extends AppCompatActivity {
 
         mp1_DrawerToggle.syncState();
 
-        mp1_toolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), SearchUniActivity.class);
-                startActivity(i);
-            }
-        });
+//        mp1_toolbar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent();
+//                i.setClass(getApplicationContext(), SearchUniActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
     }
 
@@ -178,5 +180,25 @@ public class MainPage1 extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            this.finishAffinity();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

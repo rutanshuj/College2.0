@@ -25,9 +25,9 @@ public class mp1_SwipeTab extends Fragment {
 
     final int[] ICONS = new int[]{
             R.drawable.mein,
-            R.drawable.home_white,
-            R.drawable.news_white,
-            R.drawable.forum_white
+            R.drawable.home,
+            R.drawable.news,
+            R.drawable.forum
     };
 
     @Nullable

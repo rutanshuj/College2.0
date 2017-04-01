@@ -172,6 +172,7 @@ public class CreateEvent4 extends AppCompatActivity {
 
                     progressDialog.dismiss();
                     startActivity(new Intent(CreateEvent4.this, MainPage1.class));
+                    finish();
 
                 }
             }).addOnFailureListener(new OnFailureListener() {

@@ -2,19 +2,14 @@ package com.example.admin.college20;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,16 +17,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
 public class EventView extends AppCompatActivity {
-
     DatabaseReference databaseReference;
-
     RecyclerView recyclerView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +37,6 @@ public class EventView extends AppCompatActivity {
 
         //Select the type of layout manager you would use for your recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     @Override
@@ -58,11 +47,10 @@ public class EventView extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setTitle(event_cat);
         getSupportActionBar().setTitle(event_cat);
-
         databaseReference.orderByChild("category").equalTo(event_cat).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot !=null){
+                if(dataSnapshot!=null){
                     startShowing();
                 }
                 else{
@@ -70,10 +58,8 @@ public class EventView extends AppCompatActivity {
                     startActivity(i);
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
@@ -85,17 +71,14 @@ public class EventView extends AppCompatActivity {
                 R.layout.events_list_row,
                 EventView.RequestViewHolder.class,
                 databaseReference.orderByChild("category").equalTo(event_cat)
-
         ) {
             @Override
             protected void populateViewHolder(EventView.RequestViewHolder viewHolder, Event model, int position) {
-                
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setCategory(model.getCategory());
                 viewHolder.setLocation(model.getLocation());
                 viewHolder.setPrice(model.getPrice());
                 viewHolder.setImageUrl(getApplicationContext(), model.getImageUrl());
-
                 viewHolder.setEvent_user_image(getApplicationContext(), model.getEvent_user_image());
                 viewHolder.setEvent_username(model.getEvent_username());
 
@@ -113,9 +96,6 @@ public class EventView extends AppCompatActivity {
                 final String fblink = model.getFblink();
                 final String weblink = model.getWeblink();
                 final String contact = model.getContact();
-
-                final String eventusername = model.getEvent_username();
-                final String event_user_image = model.getEvent_user_image();
 
                 viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -141,7 +121,6 @@ public class EventView extends AppCompatActivity {
             }
         };
         recyclerView.setAdapter(firebaseRecyclerAdapter);
-
     }
 
     public static class RequestViewHolder extends RecyclerView.ViewHolder {

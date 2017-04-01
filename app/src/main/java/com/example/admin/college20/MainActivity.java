@@ -232,20 +232,22 @@ public class MainActivity extends AppCompatActivity {
                         final String uid = profile.getUid();
 
                         // Name, email address, and profile photo Url
-                        String name = profile.getDisplayName();
-                        String email = profile.getEmail();
-                        Uri photoUrl = profile.getPhotoUrl();
-                        String url = photoUrl.toString();
-
+                        final String name = profile.getDisplayName();
+                        final Uri photoUrl = profile.getPhotoUrl();
+                        final String url = photoUrl.toString();
+                        final String email = profile.getEmail();
                         final String uid1 = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         DatabaseReference current_user_db =  mDatabaseUsers.child(uid1);
                         current_user_db.child("name").setValue(name);
-                        current_user_db.child("email").setValue(email);
-                        
+
                         current_user_db.child("imageUrl").setValue(url);
                         current_user_db.child("user_id").setValue(uid);
+                        if (email != null) {
+                            current_user_db.child("email").setValue(email);
+                        }
+                        System.out.println(email);
                         progressDialog.dismiss();
-                    };
+                    }
                 }
             }
         });

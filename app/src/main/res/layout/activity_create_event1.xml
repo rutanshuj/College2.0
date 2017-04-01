@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_create_event11"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,92 +11,136 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.admin.college20.CreateEvent1"
     android:background="@drawable/create0">
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/r3"
-        android:paddingLeft="10dp"
-        android:hint="Event Title"
-        android:id="@+id/event_title"
-        android:inputType="textMultiLine"
-        android:layout_marginTop="24dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/contact_info"
-        android:layout_alignStart="@+id/contact_info" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/category"
-        android:textSize="15sp"
+        android:text="Event Title"
         android:textColor="@color/black"
-        android:text="Category"
-        android:layout_marginTop="27dp"
-        android:layout_below="@+id/event_title"
-        android:layout_alignStart="@+id/relativeLayout" />
-
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/event_title"
+        android:layout_marginTop="12dp"
+        android:id="@+id/textView11" />
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Club Name"
+        android:background="@drawable/r3"
+        android:paddingLeft="10dp"
+        android:hint="Building The Future 2.0"
+        android:id="@+id/event_title"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/textView11"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/relativeLayout"
+        android:layout_below="@+id/event_title"
+        android:layout_marginTop="27dp"
+        android:text="Category"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/event_club"
+        android:layout_below="@+id/category">
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/r3"
+            android:entries="@array/Categories"
+            android:prompt="@string/cat_prompt"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@+id/spinnerCategory"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_keyboard_arrow_down" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club Name"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignStart="@+id/event_club" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="@string/edittext_hint"
         android:background="@drawable/r3"
         android:paddingLeft="10dp"
         android:id="@+id/event_club"
         android:inputType="textMultiLine"
-        android:layout_marginTop="77dp"
-        android:layout_below="@+id/category"
-        android:layout_alignStart="@+id/contact_info" />
+        android:layout_below="@+id/textView8"
+        android:layout_alignStart="@+id/event_title" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Contact Number"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:id="@+id/textView10"
         android:layout_marginTop="18dp"
-        android:id="@+id/nextButton0"
-        android:layout_below="@+id/event_price"
-        android:layout_centerHorizontal="true" />
-
+        android:layout_below="@+id/event_club"
+        android:layout_alignStart="@+id/contact_info" />
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Contact Number"
+        android:hint="+919870739552 (For the ladies)"
         android:id="@+id/contact_info"
         android:inputType="textMultiLine"
-        android:layout_marginTop="21dp"
         android:background="@drawable/r3"
         android:paddingLeft="10dp"
-        android:layout_below="@+id/event_club"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/textView10"
+        android:layout_alignStart="@+id/event_club" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:id="@+id/textView12"
+        android:layout_below="@+id/contact_info"
+        android:layout_alignStart="@+id/event_price"
+        android:layout_marginTop="14dp" />
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Price"
-        android:layout_marginTop="16dp"
+        android:hint="Free! Free! Free!"
         android:id="@+id/event_price"
         android:background="@drawable/r3"
         android:paddingLeft="10dp"
-        android:layout_below="@+id/contact_info"
+        android:layout_below="@+id/textView12"
         android:layout_alignStart="@+id/contact_info" />
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/category"
-    android:layout_alignStart="@+id/event_club"
-    android:id="@+id/relativeLayout">
-    <Spinner
-        android:id="@+id/spinnerCategory"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/r3"
-        android:entries="@array/Categories"
-        android:prompt="@string/cat_prompt" />
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_keyboard_arrow_down"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/spinnerCategory" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/nextButton0"
+        app:backgroundTint="@color/light_orange"
+        android:textColor="@color/black"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Just the beginning"
+        android:layout_below="@+id/event_price"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

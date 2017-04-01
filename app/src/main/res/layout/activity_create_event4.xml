@@ -20,22 +20,14 @@
         android:layout_alignStart="@+id/upload_image_button" />
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        android:id="@+id/doneButton"
-        android:layout_below="@+id/eventImage"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
+        android:textColor="@color/black"
         android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:text="Upload Image"
         android:id="@+id/upload_image_button"
-        android:layout_marginBottom="17dp"
         android:layout_above="@+id/eventImage"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp" />
 
     <ImageView
         android:layout_width="300dp"
@@ -44,6 +36,16 @@
         android:id="@+id/eventImage"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/upload_image_button" />
+
+    <Button
+        android:id="@+id/doneButton"
+        app:backgroundTint="@color/light_orange"
+        android:textColor="@color/black"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventImage"
+        android:layout_centerHorizontal="true"
+        android:text="You're Done !!" />
 
 
 </RelativeLayout>

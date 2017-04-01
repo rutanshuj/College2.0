@@ -87,4 +87,7 @@
     </string-array>
     <string name="title_activity_navigation3">Navigation3</string>
 
+    <string name="edittext_hint"><font size="13">Apple Developers Group (This is called Marketing)</font></string>
+
+
 </resources>

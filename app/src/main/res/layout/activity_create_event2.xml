@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.admin.college20.CreateEvent2"
     android:background="@drawable/create1">
 
@@ -93,16 +94,16 @@
         android:layout_alignStart="@+id/fromDate" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
+        app:backgroundTint="@color/light_orange"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Timing is Imperative "
         android:id="@+id/nextButton1"
-        android:layout_marginTop="53dp"
-        android:layout_below="@+id/toTimeBttn"
-        android:layout_toRightOf="@+id/fromTime"
-        android:layout_toEndOf="@+id/fromTime"
+        android:layout_marginTop="73dp"
         android:layout_marginLeft="99dp"
-        android:layout_marginStart="99dp" />
+        android:layout_below="@+id/startTime"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:textColor="@color/black"

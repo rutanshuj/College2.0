@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_create_event3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,54 +12,84 @@
     android:background="@drawable/create2"
     tools:context="com.example.admin.college20.CreateEvent3">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/event_loca_eT"
+        android:layout_marginTop="12dp"
+        android:text="Event Location"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/event_loca_eT"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:hint="Facebook Link"
-        android:ems="10"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/r3"
-        android:paddingLeft="10dp"
-        android:layout_marginTop="26dp"
-        android:id="@+id/facebook_link_eT"
+        android:ems="10"
+        android:hint="Location"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/event_loca_eT"
         android:layout_below="@+id/event_loca_eT"
-        android:layout_alignLeft="@+id/event_loca_eT"
-        android:layout_alignStart="@+id/event_loca_eT" />
+        android:layout_marginTop="34dp"
+        android:text="Facebook Link"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:inputType="textPersonName"
-        android:hint="Website Link"
+        android:hint="https://example.com"
         android:ems="10"
         android:background="@drawable/r3"
         android:paddingLeft="10dp"
-        android:layout_marginTop="33dp"
+        android:id="@+id/facebook_link_eT"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Web Link"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_below="@+id/facebook_link_eT"
+        android:layout_alignStart="@+id/web_link_eT"
+        android:layout_marginTop="35dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:inputType="textPersonName"
+        android:hint="https://example.com"
+        android:ems="10"
+        android:background="@drawable/r3"
+        android:paddingLeft="10dp"
         android:id="@+id/web_link_eT"
         android:layout_below="@+id/facebook_link_eT"
-        android:layout_alignLeft="@+id/facebook_link_eT"
-        android:layout_alignStart="@+id/facebook_link_eT" />
-
-    <EditText
-        android:layout_width="300dp"
-        android:background="@drawable/r3"
-        android:paddingLeft="10dp"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:hint="Event Location"
-        android:ems="10"
-        android:layout_marginTop="24dp"
-        android:id="@+id/event_loca_eT"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/facebook_link_eT"
+        android:layout_marginTop="51dp" />
 
     <Button
-        android:text="Next"
-        android:layout_width="150dp"
+        android:text="Just One More Step"
+        android:layout_width="300dp"
+        app:backgroundTint="@color/light_orange"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:id="@+id/nextButton2"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="43dp"
         android:layout_below="@+id/web_link_eT"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/web_link_eT" />
 </RelativeLayout>

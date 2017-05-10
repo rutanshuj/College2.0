@@ -9,9 +9,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-/**
- * Created by Rutanshu Jhaveri on 10/10/2016.
- */
 public class NavigationActivity extends AppCompatActivity{
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;

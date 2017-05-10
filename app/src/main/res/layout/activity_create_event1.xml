@@ -84,7 +84,7 @@
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="@string/edittext_hint"
+        android:hint="Developers Group"
         android:background="@drawable/r3"
         android:paddingLeft="10dp"
         android:id="@+id/event_club"
@@ -105,7 +105,7 @@
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="+919870739552 (For the ladies)"
+        android:hint="+919870739552"
         android:id="@+id/contact_info"
         android:inputType="textMultiLine"
         android:background="@drawable/r3"

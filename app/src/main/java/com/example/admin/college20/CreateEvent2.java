@@ -55,6 +55,8 @@ public class CreateEvent2 extends Activity implements View.OnClickListener {
         fromTimeBttn.setOnClickListener(this);
         toTimeBttn.setOnClickListener(this);
         nextBttn.setOnClickListener(this);
+
+        nextBttn.setBackgroundColor(getResources().getColor(R.color.light_orange));
     }
 
     @Override

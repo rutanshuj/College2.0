@@ -59,7 +59,7 @@ public class CreateEvent1 extends AppCompatActivity {
                 final String event_cat = spinner.getSelectedItem().toString();
                 final String club = mEventClub.getText().toString().trim();
                 final String price = mPrice.getText().toString().trim();
-                Log.d("gaandu", event_cat);
+                Log.d("event_cat", event_cat);
 
                 if (!TextUtils.isEmpty(event_title)
                         && !TextUtils.isEmpty(contact)
